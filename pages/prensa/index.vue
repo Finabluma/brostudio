@@ -18,6 +18,26 @@
           <p v-else>Todavía no hay articulos publicados.</p>
         </div>
       </section>
+      <app-aside layout="green">
+        <template slot="header">
+          <h2>¿Qué ofrecemos?</h2>
+        </template>
+        <p>
+          Tanto en nuestra cocina como en nuestra oferta de vinos encontrarás
+          una variedad de productos que esperamos sean de tu agrado. Consulta
+          nuestra carta :)
+        </p>
+        <template slot="footer">
+          <app-button
+            to="carta"
+            title="La Carta"
+            variant="primary"
+            size="small"
+          >
+            la carta
+          </app-button>
+        </template>
+      </app-aside>
     </main>
     <app-footer />
   </div>
@@ -27,12 +47,16 @@ import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import ArticlePreview from '~/components/ArticlePreview.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
+import AppAside from '~/components/AppAside.vue'
+import AppButton from '~/components/AppButton.vue'
 export default {
   name: 'IndexPrensa',
   components: {
     ArticlePreview,
     AppHeader,
     AppFooter,
+    AppAside,
+    AppButton,
   },
   head() {
     const generalData = {
@@ -100,6 +124,48 @@ export default {
       @apply p-2
         mb-2
         lg:mb-16;
+    }
+  }
+
+  & aside .inner {
+    @apply flex
+    flex-col
+    justify-center
+    items-center;
+
+    &:before {
+      @apply mb-10;
+    }
+
+    &:after {
+      @apply mt-2;
+    }
+
+    & h2,
+    & p {
+      @apply px-2
+      mx-auto
+      w-11/12
+      sm:w-10/12
+      md:w-10/12
+      lg:w-9/12
+      xl:w-10/12;
+    }
+    & h2 {
+      @apply text-altheader font-dejanire content-after text-center mb-5;
+
+      &:after {
+        @apply block
+          w-10
+          h-1
+          mx-auto
+        bg-slate800
+          dark:bg-gray-300;
+      }
+    }
+
+    & p {
+      @apply font-hero font-light text-xl mb-5 text-center;
     }
   }
 
