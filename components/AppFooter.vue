@@ -143,12 +143,13 @@ export default {
       }
 
       & .login {
-        @apply py-1;
+        @apply px-1
+        py-2;
         & a {
           @apply flex items-center justify-center;
 
           & svg {
-            @apply ml-1;
+            @apply mx-1;
           }
         }
       }
