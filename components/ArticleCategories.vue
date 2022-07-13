@@ -1,0 +1,47 @@
+<template>
+  <div v-if="article.categories">
+    <span class="sr-only">Categorías:</span>
+    <app-icon-tags />
+    <span v-for="(category, index) in article.categories" :key="category.slug">
+      <NuxtLink :to="category.slug | articleCategoryUrl">
+        {{ category.title }}
+      </NuxtLink>
+      <span v-if="index !== article.categories.length - 1">,</span>
+    </span>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'ArticleDateAndCategories',
+  props: {
+    article: {
+      type: Object,
+      default: null,
+    },
+  },
+}
+</script>
+<style lang="postcss" scoped>
+div {
+  @apply flex
+  items-center
+  mb-5;
+
+  & svg {
+    @apply mr-1;
+  }
+
+  & span {
+    @apply flex;
+  }
+
+  & a {
+    @apply font-hero
+    text-base
+    lowercase
+    leading-7
+    px-1;
+  }
+}
+</style>
