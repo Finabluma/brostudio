@@ -92,7 +92,7 @@ export default {
           text-paragraph;
 
           & span:first-child {
-            @apply mr-5;
+            @apply w-9/12;
           }
 
           & span:last-child {
