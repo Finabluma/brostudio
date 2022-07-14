@@ -4,16 +4,9 @@
     <main>
       <div ref="hero" class="hero">
         <div class="content">
-          <h1 class="sr-only">{{ page.title }}</h1>
-          <div
-            v-for="(pageSection, index) in page.pageSections"
-            :key="`${index}-${pageSection._type}`"
-            class="content-inner"
-          >
-            <RichTextSection
-              v-if="pageSection._type === 'richTextSection'"
-              :page-section="pageSection"
-            />
+          <div class="content-inner">
+            <h1>{{ page.title }}</h1>
+            <SanityContent :blocks="page.mainPageContent" class="lead" />
           </div>
           <SVGCallNow />
         </div>
@@ -45,7 +38,6 @@ import AppFooter from '~/components/AppFooter.vue'
 import SVGCallNow from '~/components/SVGCallNow.vue'
 import AppAside from '~/components/AppAside.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
-import RichTextSection from '~/components/RichTextSection.vue'
 import SVGUniverse from '~/components/SVGUniverse.vue'
 export default {
   name: 'PageReservas',
@@ -54,7 +46,7 @@ export default {
     AppFooter,
     AppAside,
     SVGCallNow,
-    RichTextSection,
+    // RichTextSection,
     SVGUniverse,
   },
   head() {
@@ -117,7 +109,7 @@ export default {
           sm:mb-10
           lg:ml-0;
 
-          & h2 {
+          & h1 {
             @apply font-dejanire
             text-5xl
             content-after
@@ -128,6 +120,12 @@ export default {
             &:after {
               lg: ml-0;
             }
+          }
+
+          & .lead {
+            @apply font-hero
+            font-light
+            text-paragraph;
           }
         }
       }

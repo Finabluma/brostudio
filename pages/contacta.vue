@@ -3,15 +3,9 @@
     <app-header />
     <main>
       <div class="contact_content">
-        <div
-          v-for="(pageSection, index) in page.pageSections"
-          :key="`${index}-${pageSection._type}`"
-          class="inner_content"
-        >
-          <RichTextSection
-            v-if="pageSection._type === 'richTextSection'"
-            :page-section="pageSection"
-          />
+        <div class="inner_content">
+          <h2>Contacta</h2>
+          <SanityContent :blocks="page.mainPageContent" />
         </div>
         <div class="mapa">
           <map-box-light />
@@ -27,7 +21,6 @@
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import MapBoxLight from '~/components/MapBoxLight.vue'
-import RichTextSection from '~/components/RichTextSection.vue'
 import LatestArticlesSection from '~/components/LatestArticlesSection.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 
@@ -38,7 +31,6 @@ export default {
     AppFooter,
     LatestArticlesSection,
     MapBoxLight,
-    RichTextSection,
   },
   head() {
     const generalData = {
@@ -94,7 +86,8 @@ export default {
         sm:h-[80vh]
         md:h-[70vh]
         md:w-[95vw]
-        xl:w-[85vw];
+        xl:w-[85vw]
+        2xl:w-[70vw];
       }
 
       & .inner_content {
@@ -113,7 +106,8 @@ export default {
         md:bg-transparent
         xl:left-36
         xl:bottom-10
-        2xl:left-40;
+        2xl:w-9/12
+        2xl:left-72;
 
         & h2 {
           @apply font-dejanire

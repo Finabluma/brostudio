@@ -3,7 +3,6 @@
     <SanityContent
       :blocks="content"
       :serializers="serializers"
-      :class="{ notas: notas }"
     />
   </div>
 </template>

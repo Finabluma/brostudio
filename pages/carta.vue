@@ -18,36 +18,26 @@
       <!-- END HERO -->
       <div class="mainwrapper">
         <div v-if="page">
-          <div
-            v-for="(pageSection, index) in page.pageSections"
-            :key="`${index}-${pageSection._type}`"
-            :class="{ 'mt-60 sm:mt-100': index >= 1 }"
-          >
-            <div class="carta">
-              <div id="platos">
-                <RichTextSection
-                  v-if="pageSection._type === 'richTextSection'"
-                  :page-section="pageSection"
-                />
-                <div class="carta-items">
-                  <carta-platos :platos="platosMar">Del Mar</carta-platos>
-                  <carta-platos :platos="platosTierra"
-                    >De la tierra</carta-platos
-                  >
-                  <carta-platos :platos="platosCarpaccios"
-                    >Carpaccios</carta-platos
-                  >
-                  <carta-platos :platos="platosPostres">Postres</carta-platos>
-                </div>
+          <div class="carta">
+            <div id="platos">
+              <h2>Platos</h2>
+              <SanityContent :blocks="page.mainPageContent" class="lead" />
+              <div class="carta-items">
+                <carta-platos :platos="platosMar">Del Mar</carta-platos>
+                <carta-platos :platos="platosTierra">De la tierra</carta-platos>
+                <carta-platos :platos="platosCarpaccios"
+                  >Carpaccios</carta-platos
+                >
+                <carta-platos :platos="platosPostres">Postres</carta-platos>
               </div>
-              <div id="bebidas">
-                <h2>Vinos & Cavas</h2>
-                <div class="carta-items">
-                  <carta-vinos :vino="vinosTintos">Tintos</carta-vinos>
-                  <carta-vinos :vino="vinosBlancos">Blancos</carta-vinos>
-                  <carta-vinos :vino="vinosRosados">Rosados</carta-vinos>
-                  <carta-vinos :vino="vinosCava">Cavas</carta-vinos>
-                </div>
+            </div>
+            <div id="bebidas">
+              <h2>Vinos & Cavas</h2>
+              <div class="carta-items">
+                <carta-vinos :vino="vinosTintos">Tintos</carta-vinos>
+                <carta-vinos :vino="vinosBlancos">Blancos</carta-vinos>
+                <carta-vinos :vino="vinosRosados">Rosados</carta-vinos>
+                <carta-vinos :vino="vinosCava">Cavas</carta-vinos>
               </div>
             </div>
           </div>
@@ -78,6 +68,12 @@ export default {
     CartaVinos,
     SVGCarta,
     LatestArticlesSection,
+  },
+  props: {
+    mainPageContent: {
+      type: Array,
+      default: null,
+    },
   },
   head() {
     const generalData = {
@@ -156,7 +152,8 @@ export default {
     bg-cover
     content-after
     sm:h-[300px]
-    md:h-[400px]
+    md:h-[350px]
+    lg:h-[380px]
     xl:h-[420px];
 
     &:after {
@@ -203,11 +200,10 @@ export default {
     @apply relative
     z-30
     bg-gradient-to-b
-    from-gray-200
-    to-gray-300
-    dark:from-gray-700
-    dark:via-gray-800
-    dark:to-gray-800;
+  from-gray-200
+  to-gray-300
+  dark:from-gray-700
+  dark:to-gray-800;
   }
 
   & .carta {
@@ -216,7 +212,7 @@ export default {
     pt-6
     md:pb-8
     md:w-10/12
-    lg:w-8/12
+    lg:w-9/12
     xl:w-8/12;
 
     & h2,
@@ -234,7 +230,7 @@ export default {
       }
     }
 
-    & .notas {
+    & .lead {
       @apply mb-5
         font-hero
         font-light
