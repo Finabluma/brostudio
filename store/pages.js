@@ -5,6 +5,7 @@ export const pagesQuery = `
       pageShareImage,
       pageTitle
     },
+    mainPageContent[],
     pageSections[]{
       ...,
       mainContent[]{
