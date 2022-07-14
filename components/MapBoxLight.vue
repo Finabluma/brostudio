@@ -22,9 +22,8 @@ export default {
       maxZoom: 18,
       minZoom: 13,
       attributionControl: false,
-    })
-      .addControl(new mapboxgl.NavigationControl(), 'bottom-right')
-      .addControl(new mapboxgl.FullscreenControl(), 'top-right')
+    }).addControl(new mapboxgl.NavigationControl(), 'bottom-right')
+    // .addControl(new mapboxgl.FullscreenControl(), 'top-right')
     this.map.scrollZoom.disable()
     this.map.dragPan.enable({
       linearity: 0.3,
