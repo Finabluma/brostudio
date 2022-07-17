@@ -12,7 +12,7 @@
         layout="aside"
       />
     </div>
-    <link-button path="/prensa" variant="secondary" size="small"
+    <link-button path="/prensa" variant="secondary" size="normal"
       >Más Articulos</link-button
     >
   </section>
@@ -99,6 +99,10 @@ aside {
         @apply md:mr-0;
       }
     }
+  }
+
+  & a {
+    @apply mb-16;
   }
 }
 </style>
