@@ -17,7 +17,7 @@
       </div>
       <!-- END HERO -->
       <div class="mainwrapper">
-        <div v-if="page">
+        <div>
           <div class="carta">
             <div id="platos">
               <h2>Platos</h2>
@@ -42,8 +42,23 @@
             </div>
           </div>
         </div>
-        <ErrorScreen v-else />
-        <latest-articles-section />
+        <!-- <latest-articles-section /> -->
+        <app-aside layout="green" title="Contenido secundario Reservas">
+          <div
+            v-for="(pageSection, index) in page.pageSectionsAside"
+            :key="`${index}-${pageSection._type}`"
+            :class="{ 'mt-10 sm:mt-8': index >= 1 }"
+          >
+            <rich-text-section
+              v-if="pageSection._type === 'richTextAside'"
+              :page-section="pageSection"
+            />
+            <latest-articles-section
+              v-if="pageSection._type === 'latestArticlesSection'"
+              :page-section="pageSection"
+            />
+          </div>
+        </app-aside>
       </div>
     </main>
     <app-footer />
@@ -56,7 +71,8 @@ import AppHeader from '~/components/AppHeader.vue'
 import CartaPlatos from '~/components/CartaPlatos.vue'
 import CartaVinos from '~/components/CartaVinos.vue'
 import SVGCarta from '~/components/SVGCarta.vue'
-import LatestArticlesSection from '~/components/LatestArticlesSection.vue'
+import AppAside from '~/components/AppAside.vue'
+// import LatestArticlesSection from '~/components/LatestArticlesSection.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 
 export default {
@@ -67,7 +83,7 @@ export default {
     CartaPlatos,
     CartaVinos,
     SVGCarta,
-    LatestArticlesSection,
+    AppAside,
   },
   props: {
     mainPageContent: {
