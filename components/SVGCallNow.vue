@@ -208,7 +208,7 @@ export default {
   }
 
   & #letters {
-    @apply fill-slate800 dark:fill-white/75;
+    @apply fill-slate800;
   }
 
   & #bruja_ring {
