@@ -36,7 +36,7 @@ export default {
   },
 }
 </script>
-<style lang="postcss">
+<style lang="postcss" scoped>
 .rich-text {
   @apply font-dejanire font-light
     leading-normal
@@ -99,5 +99,9 @@ export default {
       @apply px-5;
     }
   }
+}
+
+aside .rich-text p {
+  @apply text-center font-hero text-paragraph;
 }
 </style>

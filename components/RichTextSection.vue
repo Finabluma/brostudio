@@ -26,10 +26,9 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .rich-text-section {
-  @apply pt-5
-  w-11/12
+  @apply w-11/12
   mx-auto
   flex
   flex-col
@@ -37,11 +36,10 @@ export default {
   items-center
   content-after
   sm:w-9/12
-  lg:w-8/12
-  xl:w-7/12
-  2xl:px-10;
+  lg:w-9/12
+  xl:w-7/12;
 
-  &:after {
+  /* &:after {
     @apply block
     w-1
     h-1
@@ -49,23 +47,18 @@ export default {
     ring-2
   ring-gray-500
   bg-gray-100
-    mx-auto
-    mt-10;
-  }
+    mx-auto;
+  } */
 
   & h1 {
-    @apply text-heading font-dejanire content-after mb-5;
+    @apply text-altheader
+    font-dejanire
+    font-light
+    content-after
+    mb-5;
 
     &:after {
-      @apply mx-auto;
-    }
-  }
-
-  & .rich-text div p {
-    @apply font-hero font-light text-lg mb-5 text-center;
-
-    & a {
-      @apply flex mt-10;
+      @apply mx-auto mt-2;
     }
   }
 }
