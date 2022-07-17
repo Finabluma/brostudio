@@ -1,11 +1,9 @@
 <template>
-  <app-aside layout="green">
-    <template slot="header">
-      <header>
-        <h1>Prensa</h1>
-        <span>Así vemos las cosas</span>
-      </header>
-    </template>
+  <section v-if="pageSection.disabled !== true">
+    <header>
+      <h1 v-if="pageSection.heading">{{ pageSection.heading }}</h1>
+      <span v-if="pageSection.subheading">{{ pageSection.subheading }}</span>
+    </header>
     <div class="list-articles">
       <ArticlePreview
         v-for="article in articles"
@@ -14,28 +12,26 @@
         layout="aside"
       />
     </div>
-    <template slot="footer">
-      <app-button
-        to="prensa"
-        title="Articulos de Prensa"
-        variant="primary"
-        size="small"
-        >Más artículos</app-button
-      >
-    </template>
-  </app-aside>
+    <link-button path="/prensa" variant="secondary" size="small"
+      >Más Articulos</link-button
+    >
+  </section>
 </template>
 
 <script>
-import AppAside from '~/components/AppAside.vue'
-import AppButton from '~/components/AppButton.vue'
+import LinkButton from './LinkButton.vue'
 import ArticlePreview from '~/components/ArticlePreview.vue'
 export default {
   name: 'LatestArticles',
   components: {
-    AppAside,
-    AppButton,
     ArticlePreview,
+    LinkButton,
+  },
+  props: {
+    pageSection: {
+      type: Object,
+      default: null,
+    },
   },
   computed: {
     articles() {
@@ -52,25 +48,29 @@ aside {
   & header {
     @apply py-3
     px-6
-    mb-3
+    mb-10
     flex
     flex-col
     justify-center
+    items-center
     sm:px-2
     sm:w-11/12
     sm:mx-auto
-    md:w-full;
+    md:w-10/12;
 
     & h1 {
-      @apply font-hero
+      @apply font-dejanire
       content-after
-      text-4xl
-      mb-2
-      sm:text-[38px];
+      text-restaurante
+      font-light
+      capitalize
+      tracking-wide
+      mb-2;
 
       &:after {
         @apply w-5
         mt-1
+        mx-auto
         sm:w-10;
       }
     }
@@ -87,7 +87,8 @@ aside {
     md:flex
     md:justify-center
     md:max-w-4xl
-    md:mx-auto;
+    md:mx-auto
+    md:mb-14;
 
     & article {
       @apply md:mr-6

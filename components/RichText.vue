@@ -1,9 +1,6 @@
 <template>
   <div class="rich-text">
-    <SanityContent
-      :blocks="content"
-      :serializers="serializers"
-    />
+    <SanityContent :blocks="content" :serializers="serializers" />
   </div>
 </template>
 
@@ -36,11 +33,6 @@ export default {
         },
       },
     }
-  },
-  computed: {
-    notas() {
-      return this.$route.name === 'carta' || this.$route.name === 'index'
-    },
   },
 }
 </script>
