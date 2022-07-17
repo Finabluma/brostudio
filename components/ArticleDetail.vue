@@ -4,23 +4,17 @@
     <article>
       <article-detail-header :article="article" />
       <article-detail-main :article="article" />
-      <article-detail-pagination
-        v-if="article.previousArticleSlug || article.nextArticleSlug"
-        :article="article"
-      />
     </article>
   </div>
 </template>
 
 <script>
 import ArticleDetailHeader from './ArticleDetailHeader.vue'
-import ArticleDetailPagination from '~/components/ArticleDetailPagination.vue'
 import ArticleDetailMain from '~/components/ArticleDetailMain.vue'
 
 export default {
   name: 'ArticleDetail',
   components: {
-    ArticleDetailPagination,
     ArticleDetailHeader,
     ArticleDetailMain,
   },

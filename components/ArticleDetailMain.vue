@@ -27,6 +27,10 @@
         <article-categories :article="article" class="my-10" />
       </div>
     </div>
+    <article-detail-pagination
+      v-if="article.previousArticleSlug || article.nextArticleSlug"
+      :article="article"
+    />
   </div>
 </template>
 
