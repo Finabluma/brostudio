@@ -6,7 +6,20 @@ export const pagesQuery = `
       pageTitle
     },
     mainPageContent[],
-    pageSections[]{
+    conditionSections[]{
+      ...,
+      mainContent[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug.current,
+            "dataType": @.reference->_type
+          }
+        }
+      }
+    },
+    pageSectionsAside[]{
       ...,
       mainContent[]{
         ...,

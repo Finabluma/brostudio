@@ -18,25 +18,21 @@
           <p v-else>Todavía no hay articulos publicados.</p>
         </div>
       </section>
-      <app-aside layout="green">
-        <template slot="header">
-          <h2>¿Qué ofrecemos?</h2>
-        </template>
-        <p>
-          Tanto en nuestra cocina como en nuestra oferta de vinos encontrarás
-          una variedad de productos que esperamos sean de tu agrado. Consulta
-          nuestra carta :)
-        </p>
-        <template slot="footer">
-          <app-button
-            to="carta"
-            title="La Carta"
-            variant="primary"
-            size="small"
-          >
-            la carta
-          </app-button>
-        </template>
+      <app-aside layout="green" title="Contenido secundario Reservas">
+        <div
+          v-for="(pageSection, index) in page.pageSectionsAside"
+          :key="`${index}-${pageSection._type}`"
+          :class="{ 'mt-10 sm:mt-8': index >= 1 }"
+        >
+          <rich-text-section
+            v-if="pageSection._type === 'richTextAside'"
+            :page-section="pageSection"
+          />
+          <latest-articles-section
+            v-if="pageSection._type === 'latestArticlesSection'"
+            :page-section="pageSection"
+          />
+        </div>
       </app-aside>
     </main>
     <app-footer />
@@ -48,7 +44,6 @@ import AppFooter from '~/components/AppFooter.vue'
 import ArticlePreview from '~/components/ArticlePreview.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 import AppAside from '~/components/AppAside.vue'
-import AppButton from '~/components/AppButton.vue'
 export default {
   name: 'IndexPrensa',
   components: {
@@ -56,7 +51,6 @@ export default {
     AppHeader,
     AppFooter,
     AppAside,
-    AppButton,
   },
   head() {
     const generalData = {
@@ -67,6 +61,12 @@ export default {
     }
   },
   computed: {
+    page() {
+      const page = this.$store.state.pages.pages.filter((page) => {
+        return page.slug === 'prensa'
+      })
+      return page[0] || null
+    },
     articles() {
       return this.$store.state.articles.articles
     },
