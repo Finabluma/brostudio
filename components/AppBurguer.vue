@@ -26,6 +26,6 @@ export default {
 
 <style lang="postcss" scoped>
 #menu__navigation svg {
-  @apply w-4;
+  @apply w-[18px];
 }
 </style>
