@@ -48,16 +48,16 @@ export default {
       @apply w-full
       font-hero
       font-light
-      text-2xl
+      text-3xl
       text-center
-      xl:text-altheader;
+      lg:text-restaurante;
 
       & a {
         @apply block border-b
-        border-gray-300
+        border-gray-400
         py-4
         transition-all
-        xl:py-6
+        lg:py-8
         hover:text-gray-900
         dark:border-white/30
         dark-hover:text-gray-400;
