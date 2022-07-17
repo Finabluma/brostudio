@@ -46,9 +46,9 @@ export default {
 #prensarticle {
   @apply bg-gradient-to-b
   from-gray-200
-  to-transparent
+  to-gray-300
   dark:from-gray-700
   dark:via-gray-800
-  dark:to-transparent;
+  dark:to-gray-800;
 }
 </style>

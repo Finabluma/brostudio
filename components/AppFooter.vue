@@ -44,7 +44,7 @@ export default {
   @apply relative
   z-20
   bg-gradient-to-b
-  from-gray-200
+  from-gray-300
   dark:from-gray-800;
 
   & .container {

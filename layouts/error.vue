@@ -69,6 +69,7 @@ export default {
     @apply w-11/12
     mx-auto
     pt-12
+    pb-20
     flex
     items-center
     flex-col
