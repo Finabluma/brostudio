@@ -50,7 +50,7 @@ export default {
       font-light
       text-2xl
       text-center
-      xl:text-3xl;
+      xl:text-altheader;
 
       & a {
         @apply block border-b
@@ -118,7 +118,7 @@ export default {
           }
 
           &.nuxt-link-exact-active.nuxt-link-active {
-            @apply xl:bg-slate800 xl:text-gray-300;
+            @apply xl:bg-slate800 xl:text-gray-300 dark:xl:text-gray-300 dark:xl:bg-gray-500;
 
             &:hover {
               @apply dark:text-gray-400 dark:xl:text-gray-300;

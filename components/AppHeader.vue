@@ -152,11 +152,11 @@ export default {
 
   &.scrolled {
     @apply h-auto
-    bg-gray-400
-    bg-opacity-90
+    bg-gray-400/90
     backdrop-blur-sm
-    p-0
-    dark:bg-gray-800;
+    py-2
+
+    dark:bg-gray-800/90;
 
     & .nav__container {
       @apply md:flex-row-reverse
