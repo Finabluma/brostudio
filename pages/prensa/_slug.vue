@@ -42,3 +42,13 @@ export default {
   },
 }
 </script>
+<style lang="postcss">
+#prensarticle {
+  @apply bg-gradient-to-b
+  from-gray-200
+  to-transparent
+  dark:from-gray-700
+  dark:via-gray-800
+  dark:to-transparent;
+}
+</style>

@@ -88,7 +88,7 @@ export default {
   dark:via-gray-800
   dark:to-gray-800;
 
-  & section {
+  & main > section {
     @apply w-full
     mx-auto
     mb-8
@@ -126,49 +126,6 @@ export default {
         lg:mb-16;
     }
   }
-
-  & aside .inner {
-    @apply flex
-    flex-col
-    justify-center
-    items-center;
-
-    &:before {
-      @apply mb-10;
-    }
-
-    &:after {
-      @apply mt-2;
-    }
-
-    & h2,
-    & p {
-      @apply px-2
-      mx-auto
-      w-11/12
-      sm:w-10/12
-      md:w-10/12
-      lg:w-9/12
-      xl:w-10/12;
-    }
-    & h2 {
-      @apply text-altheader font-dejanire content-after text-center mb-5;
-
-      &:after {
-        @apply block
-          w-10
-          h-1
-          mx-auto
-        bg-slate800
-          dark:bg-gray-300;
-      }
-    }
-
-    & p {
-      @apply font-hero font-light text-xl mb-5 text-center;
-    }
-  }
-
   & .footer {
     @apply mt-auto;
   }
