@@ -3,7 +3,7 @@
     v-if="linkButton"
     type="internal"
     :path="toPath"
-    variant="primary"
+    variant="secondary"
     size="small"
   >
     <slot />

@@ -17,8 +17,8 @@
       </div>
       <aside>
         <p>
-          <LinkButton type="internal" path="/"
-            >Vuelve a la página inicial</LinkButton
+          <LinkButton type="internal" variant="tertiary" path="/"
+            >Vuelve al inicio</LinkButton
           >
         </p>
       </aside>
@@ -59,7 +59,11 @@ export default {
   justify-center
   bg-gradient-to-b
   from-gray-300
-  dark:from-gray-700;
+  via-gray-200
+  to-gray-200
+  dark:from-gray-700
+  dark:via-gray-800
+  dark:to-gray-800;
 
   & main {
     @apply w-11/12
