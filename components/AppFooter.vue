@@ -41,6 +41,11 @@ export default {
 
 <style lang="postcss">
 .footer {
+  @apply relative
+  z-20
+  bg-gray-300
+  dark:bg-gray-800;
+
   & .container {
     @apply w-10/12
     mx-auto
