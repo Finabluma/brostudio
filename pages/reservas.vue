@@ -12,20 +12,27 @@
         </div>
         <SVGUniverse />
       </div>
-      <app-aside layout="green">
-        <h2 class="sr-only">Reservas sujetas a condiciones</h2>
-        <!-- <reservas-condiciones :condicionReserva="condicionReserva" /> -->
-        <section>
-          <h2>¿Qué comer?</h2>
-          <p>
-            Abre el apetito echando un vistazo a lo que podemos ofrecer. En
-            nuestra cocina encontrarás una gran variedad de productos que
-            esperamos sean de tu agrado. Bienvenid@ a nuestro hogar ;)
-          </p>
-          <app-button to="carta" title="La Carta" variant="primary" size="small"
-            >la carta</app-button
-          >
-        </section>
+      <div class="is-divider top">
+        <svg viewBox="0 0 1366 74.28" preserveAspectRatio="xMidYMin slice">
+          <path d="M0 0v74.28h1366V0s-279.5 60-683 60S0 0 0 0Z" />
+        </svg>
+      </div>
+      <conditions-reservas />
+      <app-aside layout="green" title="Contenido secundario Reservas">
+        <div
+          v-for="(pageSection, index) in page.pageSectionsAside"
+          :key="`${index}-${pageSection._type}`"
+          :class="{ 'mt-10 sm:mt-8': index >= 1 }"
+        >
+          <rich-text-section
+            v-if="pageSection._type === 'richTextAside'"
+            :page-section="pageSection"
+          />
+          <latest-articles-section
+            v-if="pageSection._type === 'latestArticlesSection'"
+            :page-section="pageSection"
+          />
+        </div>
       </app-aside>
     </main>
     <app-footer />
@@ -46,7 +53,6 @@ export default {
     AppFooter,
     AppAside,
     SVGCallNow,
-    // RichTextSection,
     SVGUniverse,
   },
   head() {
@@ -72,17 +78,16 @@ export default {
 <style lang="postcss">
 #reservas {
   @apply bg-gradient-to-b
-    from-gray-200
-    to-gray-300
-    dark:from-gray-700
-    dark:via-gray-800
-    dark:to-gray-800;
+  from-gray-200
+  to-gray-300
+  dark:from-gray-700
+  dark:via-gray-800
+  dark:to-gray-800;
 
   & main {
     & .hero {
       @apply relative
       w-screen
-      h-auto
       overflow-x-hidden
       flex
       justify-center
@@ -130,34 +135,13 @@ export default {
         }
       }
     }
+    & .is-divider {
+      @apply w-screen
+      relative;
 
-    & section:last-of-type {
-      @apply pt-5
-      w-11/12
-      mx-auto
-      flex
-      flex-col
-      justify-center
-      items-center
-      sm:w-9/12
-      lg:w-8/12
-      xl:w-7/12
-      2xl:px-10;
-
-      & h2,
-      & p {
-        @apply px-2;
-      }
-      & h2 {
-        @apply text-altheader font-dejanire content-after mb-5;
-
-        &:after {
-          @apply mx-auto;
-        }
-      }
-
-      & p {
-        @apply font-hero font-light text-lg mb-5 text-center;
+      & svg {
+        @apply fill-gray-300
+        dark:fill-gray-600;
       }
     }
   }

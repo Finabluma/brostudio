@@ -11,7 +11,22 @@
           <map-box-light />
         </div>
       </div>
-      <latest-articles-section />
+      <app-aside layout="green" title="Contenido secundario Reservas">
+        <div
+          v-for="(pageSection, index) in page.pageSectionsAside"
+          :key="`${index}-${pageSection._type}`"
+          :class="{ 'mt-10 sm:mt-8': index >= 1 }"
+        >
+          <rich-text-section
+            v-if="pageSection._type === 'richTextAside'"
+            :page-section="pageSection"
+          />
+          <latest-articles-section
+            v-if="pageSection._type === 'latestArticlesSection'"
+            :page-section="pageSection"
+          />
+        </div>
+      </app-aside>
     </main>
     <app-footer />
   </div>
@@ -22,6 +37,8 @@ import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import MapBoxLight from '~/components/MapBoxLight.vue'
 import LatestArticlesSection from '~/components/LatestArticlesSection.vue'
+import AppAside from '~/components/AppAside.vue'
+import RichTextSection from '~/components/RichTextSection'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 
 export default {
@@ -30,6 +47,8 @@ export default {
     AppHeader,
     AppFooter,
     LatestArticlesSection,
+    RichTextSection,
+    AppAside,
     MapBoxLight,
   },
   head() {
