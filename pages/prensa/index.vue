@@ -18,7 +18,7 @@
           <p v-else>Todavía no hay articulos publicados.</p>
         </div>
       </section>
-      <app-aside layout="green" title="Contenido secundario Reservas">
+      <app-aside layout="green" title="Contenido secundario Prensa">
         <div
           v-for="(pageSection, index) in page.pageSectionsAside"
           :key="`${index}-${pageSection._type}`"

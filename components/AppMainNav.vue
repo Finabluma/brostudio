@@ -118,7 +118,7 @@ export default {
           }
 
           &.nuxt-link-exact-active.nuxt-link-active {
-            @apply xl:bg-slate800 xl:text-gray-300 dark:xl:text-gray-300 dark:xl:bg-gray-500;
+            @apply xl:bg-slate800 xl:text-gray-300 dark:xl:text-gray-800 dark:xl:bg-gray-400;
 
             &:hover {
               @apply dark:text-gray-400 dark:xl:text-gray-300;

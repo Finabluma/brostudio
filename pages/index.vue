@@ -43,7 +43,7 @@
           </div>
         </div>
         <!-- <latest-articles-section /> -->
-        <app-aside layout="green" title="Contenido secundario Reservas">
+        <app-aside layout="green" title="Contenido secundario La Carta">
           <div
             v-for="(pageSection, index) in page.pageSectionsAside"
             :key="`${index}-${pageSection._type}`"
