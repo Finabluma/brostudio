@@ -43,14 +43,14 @@ export default {
 .footer {
   @apply relative
   z-20
-  bg-gray-300
-  dark:bg-gray-800;
+  bg-gradient-to-b
+  from-gray-200
+  dark:from-gray-800;
 
   & .container {
     @apply w-10/12
     mx-auto
-    mt-5
-    pt-2
+    pt-7
     pb-10
     px-2
     xl:w-9/12

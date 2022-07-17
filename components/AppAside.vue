@@ -1,9 +1,8 @@
 <template>
   <aside :class="bg">
+    <h1 class="sr-only">{{ title }}</h1>
     <div class="inner">
-      <slot name="header" />
       <slot />
-      <slot name="footer" />
     </div>
   </aside>
 </template>
@@ -37,7 +36,10 @@ export default {
 
 <style lang="postcss" scoped>
 aside {
-  @apply py-2
+  @apply relative
+  z-30
+  py-10
+  lg:py-3
   shadow-slate400
   dark:shadow-md;
 
@@ -60,11 +62,11 @@ aside {
     }
 
     &:before {
-      @apply mb-5;
+      @apply mb-6;
     }
 
     &:after {
-      @apply mb-8;
+      @apply mb-8 mt-10;
     }
   }
 }

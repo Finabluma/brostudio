@@ -52,7 +52,6 @@ export default {
   z-30
   bg-gradient-to-b
   from-gray-200
-  to-transparent
   dark:from-gray-700
   dark:via-gray-800;
 }

@@ -59,63 +59,45 @@ export default {
 
 <style lang="postcss" scoped>
 .base {
-  @apply flex items-center
+  @apply flex
   justify-center
-  border
   font-ibm
   tracking-wide
   capitalize
-  w-7/12
+  w-8/12
   mx-auto
-  mt-3
-  mb-12
-  sm:w-4/12
-  md:w-3/12
+  shadow-sm
+  md:w-5/12
+  lg:w-4/12
   xl:w-3/12;
 }
 .small {
   @apply px-4 py-2;
 }
 .normal {
-  @apply px-6 py-4 text-xl
-  md:py-4
-  lg:py-4;
-}
-.large {
-  @apply px-2
-  py-4
-  text-xl
-  block
-  sm:py-4
-  lg:py-4
-  lg:text-2xl;
+  @apply px-6 py-3;
 }
 .primary {
-  @apply border-0
-  bg-yellow-700
-  bg-opacity-60
-  text-white
-  backdrop-filter
-  backdrop-blur
-  hover:bg-black
-  hover:bg-opacity-80
-  hover:text-gray-300
-  dark:border-white
-  dark:text-gray-300
-  dark-hover:text-gray-300
-  dark-hover:bg-gray-700
-  dark-hover:bg-opacity-100;
+  @apply bg-gray-400
+  text-gray-800
+  dark:text-gray-200
+  dark:bg-gray-500
+  hover:bg-gray-500
+  hover:text-gray-200
+  dark:hover:bg-gray-800
+  dark:hover:text-gray-300;
 }
 .secondary {
-  @apply bg-white
-  bg-opacity-80
-  backdrop-filter
-  backdrop-blur
-  border-opacity-40
-  hover:border-opacity-50 hover:bg-opacity-20
-  hover:text-white
-  dark:bg-gray-700
-  dark:text-gray-300
-  dark:hover:bg-opacity-80;
+  @apply bg-gray-300
+  text-gray-800
+  border
+  border-gray-200
+  hover:bg-gray-500
+  hover:text-gray-300
+  dark:bg-gray-600
+  dark:text-gray-50
+  dark:border-gray-700
+  dark:hover:bg-gray-800
+  dark:hover:text-gray-300;
 }
 </style>
