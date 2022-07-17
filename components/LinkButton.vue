@@ -68,6 +68,8 @@ export default {
           return 'primary'
         case 'secondary':
           return 'secondary'
+        case 'tertiary':
+          return 'tertiary'
         case 'danger':
           return 'border-red-300 bg-red-300 text-white'
         default:
@@ -85,6 +87,7 @@ export default {
   font-ibm
   tracking-wide
   capitalize
+  text-base
   w-8/12
   mx-auto
   shadow-sm
@@ -120,5 +123,8 @@ export default {
   dark:border-gray-700
   dark:hover:bg-gray-800
   dark:hover:text-gray-300;
+}
+.tertiary {
+  @apply w-full p-0;
 }
 </style>
