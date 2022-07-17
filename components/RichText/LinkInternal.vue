@@ -1,5 +1,11 @@
 <template>
-  <LinkButton v-if="linkButton" type="internal" :path="toPath">
+  <LinkButton
+    v-if="linkButton"
+    type="internal"
+    :path="toPath"
+    variant="primary"
+    size="small"
+  >
     <slot />
   </LinkButton>
   <NuxtLink v-else :to="toPath">
@@ -31,9 +37,9 @@ export default {
   computed: {
     toPath() {
       if (this.dataType === 'page') {
-        return this.slug === 'index' ? '/' : `/${this.slug}/`
+        return this.slug === 'index' ? '/' : `/${this.slug}`
       } else if (this.dataType === 'article') {
-        return `/prensa/${this.slug}/`
+        return `/prensa/${this.slug}`
       } else {
         return this.slug
       }
