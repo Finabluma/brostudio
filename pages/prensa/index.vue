@@ -122,8 +122,9 @@ export default {
 
     & .listArticles {
       @apply p-2
-        mb-2
-        lg:mb-16;
+        mb-10
+        lg:mb-16
+        xl:mb-20;
     }
   }
   & .footer {
