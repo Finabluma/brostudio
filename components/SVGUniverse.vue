@@ -249,7 +249,6 @@ export default {
 
       tlScroll
         .set(sol, { fill: 'transparent' })
-        .set(iris, { fill: 'rgba(254,240,138,0.6)' })
         .to(corona, {
           fillOpacity: 0.6,
           rotation: 360,
@@ -257,7 +256,6 @@ export default {
         .to(
           iris,
           {
-            fillOpacity: 0.3,
             scale: 1.1,
           },
           '0'
@@ -265,6 +263,7 @@ export default {
         .timeScale(0.02)
 
       tl.add('grid')
+        .set(GRP, { fill: '#00000020', fillOpacity: '0.2' })
         .to(GRP, {
           yPercent: '+=10',
           scale: 0.9,
@@ -309,11 +308,11 @@ export default {
   }
 
   & #cardinales {
-    @apply stroke-cardinales fill-[transparent] dark:stroke-white/20;
+    @apply stroke-cardinales/10 fill-cardinales/50;
   }
 
   & #constelaciones {
-    @apply stroke-constlines fill-[transparent]
+    @apply stroke-constlines fill-constlines/40
     dark:stroke-white/10
     dark:fill-white/20;
   }
@@ -340,6 +339,11 @@ export default {
     @apply stroke-black fill-gray-400/20
     dark:fill-orbit/30
     dark:stroke-black/10;
+  }
+
+  & #sol #iris {
+    @apply fill-[#FEF08A]
+    dark:fill-[#FFB78A];
   }
 }
 </style>
