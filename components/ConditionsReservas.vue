@@ -184,7 +184,8 @@ export default {
               my-2
               w-1/12
               h-0.5
-              bg-gray-200;
+              bg-gray-600
+              dark:bg-gray-200;
             }
           }
         }
