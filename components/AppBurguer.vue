@@ -4,15 +4,15 @@
       id="burger"
       view-box="0 0 50 50"
       icon-name="burguer"
-      :width="50"
-      :height="50"
+      :width="16"
+      :height="17"
       role="button"
     >
-      <rect y="43.28" width="53.5" height="8.95" /><rect
+      <rect y="43.28" width="50" height="8.95" /><rect
         y="21.64"
-        width="53.5"
+        width="30"
         height="8.95"
-      /><rect width="53.5" height="8.95" />
+      /><rect width="17.5" height="8.95" />
     </app-icon-base>
   </div>
 </template>
@@ -26,6 +26,5 @@ export default {
 
 <style lang="postcss" scoped>
 #menu__navigation svg {
-  @apply w-[18px];
 }
 </style>

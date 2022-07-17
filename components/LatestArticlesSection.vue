@@ -48,7 +48,7 @@ aside {
   & header {
     @apply py-3
     px-6
-    mb-10
+    mb-5
     flex
     flex-col
     justify-center
@@ -56,6 +56,7 @@ aside {
     sm:px-2
     sm:w-11/12
     sm:mx-auto
+    md:mb-10
     md:w-10/12;
 
     & h1 {

@@ -160,7 +160,6 @@ export default {
         & .content {
           @apply w-11/12
           mx-auto
-          h-[85vh]
           flex
           flex-col
           bg-gray-400
