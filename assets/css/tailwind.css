@@ -7,10 +7,10 @@
     @apply subpixel-antialiased
     text-slate800
     bg-gradient-to-b
-  from-gray-200
-  to-gray-300
-  dark:from-gray-700
-  dark:to-gray-800
+    from-gray-200
+    to-gray-300
+    dark:from-gray-700
+    dark:to-gray-800
     dark:text-gray-300;
 
     & .nav {
@@ -69,8 +69,8 @@
         @apply block
         w-10
         h-1
-      bg-slate800
-      dark:bg-gray-300;
+        bg-slate800
+        dark:bg-gray-300;
       }
     }
 
@@ -82,7 +82,7 @@
         w-[3px]
         rounded-md
         mx-2
-      dark:bg-gray-300;
+        dark:bg-gray-300;
       }
     }
   }
