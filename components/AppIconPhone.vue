@@ -1,8 +1,8 @@
 <template>
   <app-icon-base
     view-box="0 0 512 512"
-    :width="19"
-    :height="19"
+    :width="17"
+    :height="17"
     icon-name="Teléfono"
   >
     <path
