@@ -81,29 +81,29 @@ export default {
 .footer {
   & nav {
     @apply mb-10
-        w-full
-        xl:w-auto
-        xl:mb-0;
+    w-full
+    xl:w-auto
+    xl:mb-0;
 
     & ul {
       @apply flex
-          flex-col
-          items-center
-          w-full
-          xl:flex-row
-          xl:justify-end
-          xl:w-auto;
+      flex-col
+      items-center
+      w-full
+      xl:flex-row
+      xl:justify-end
+      xl:w-auto;
 
       & li {
         @apply text-[18px]
-          font-hero
-          font-light
-          w-full
-          border-b
-          border-gray-400
-          xl:mx-2
-          xl:text-sm
-          xl:border-b-0
+        font-hero
+        font-light
+        w-full
+        border-b
+        border-gray-400
+        xl:mx-2
+        xl:text-sm
+        xl:border-b-0
         dark:border-white/10;
 
         & a {
