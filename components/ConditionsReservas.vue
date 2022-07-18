@@ -1,7 +1,7 @@
 <template>
   <div id="condiciones">
     <div class="inner-condiciones">
-      <div ref="panel" class="panel">
+      <div class="panel">
         <header>
           <hgroup>
             <h1>Condiciones</h1>
@@ -9,13 +9,8 @@
           </hgroup>
         </header>
       </div>
-      <div
-        v-for="reservas in condicion"
-        :key="reservas._key"
-        ref="panel"
-        class="panel"
-      >
-        <div class="conditions-item">
+      <div v-for="reservas in condicion" :key="reservas._key" class="panel">
+        <div ref="content" class="conditions-item">
           <div class="content">
             <h3 v-if="reservas.heading">
               {{ reservas.heading }}
@@ -41,9 +36,7 @@ export default {
   },
   data() {
     return {
-      conditionsReservasTl: gsap.timeline({
-        paused: true,
-      }),
+      conditionsReservasTl: null,
     }
   },
   computed: {
@@ -59,21 +52,36 @@ export default {
       })
     },
   },
+  beforeDestroy() {
+    this.conditionsReservasTl.pause(0).kill(true)
+    const Alltrigger = ScrollTrigger.getAll()
+    for (let i = 0; i < Alltrigger.length; i++) {
+      Alltrigger[i].kill(true)
+    }
+  },
+  destroy() {
+    this.conditionsReservasTl = null
+  },
   mounted() {
-    const timeline = this.conditionsReservasTl
-    timeline.from('.panel', { delay: 0.25 }).call(() => {
-      const panels = gsap.utils.toArray('.panel')
-      panels.forEach((panel, i) => {
-        ScrollTrigger.create({
-          trigger: panel,
-          start: 'top top',
-          pin: true,
-          pinSpacing: false,
-          snap: 1 / (i - 4),
+    const { content } = this.$refs
+    const panels = gsap.utils.toArray('.panel')
+
+    this.conditionsReservasTl = gsap.timeline().from(content, {
+      autoAlpha: 0,
+      y: '+=100',
+      onStart: () => {
+        panels.forEach((panel, i) => {
+          ScrollTrigger.create({
+            id: 'panels',
+            trigger: panel,
+            start: 'top top',
+            pin: true,
+            pinSpacing: false,
+            snap: 1 / (i - 4),
+          })
         })
-      })
+      },
     })
-    timeline.play()
   },
 }
 </script>
