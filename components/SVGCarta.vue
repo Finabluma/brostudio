@@ -34,35 +34,40 @@ import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin'
 gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin)
 export default {
   data: () => ({
-    tlGrafico: gsap.timeline({
-      paused: true,
-    }),
+    tlGrafico: null,
   }),
-  mounted() {
-    this.Grafico()
+  beforeDestroy() {
+    this.tlGrafico.pause(0).kill(true)
+    ScrollTrigger.getById('stCarta')
   },
-  methods: {
-    Grafico() {
-      const { corazon, trazado, carta } = this.$refs
-      const tl = this.tlGrafico
+  destroy() {
+    this.tlGrafico = null
+  },
+  mounted() {
+    const { corazon, trazado, carta } = this.$refs
 
-      gsap.to(corazon, {
-        duration: 1.5,
-        drawSVG: '100% 100%',
-        fillOpacity: 0.8,
-        strokeOpacity: 0.7,
-        stroke: 'orange',
-        strokeWidth: 2,
-        transformOrigin: 'center center',
-        yoyo: true,
-        repeat: -1,
+    gsap.to(corazon, {
+      duration: 1.5,
+      drawSVG: '100% 100%',
+      fillOpacity: 0.8,
+      strokeOpacity: 0.7,
+      stroke: 'orange',
+      strokeWidth: 2,
+      transformOrigin: 'center center',
+      yoyo: true,
+      repeat: -1,
+    })
+
+    this.tlGrafico = gsap
+      .timeline({
+        paused: true,
       })
-
-      tl.to(carta, {
+      .to(carta, {
         yPercent: '+=10',
         strokeOpacity: 0.3,
         fillOpacity: 0.1,
-      }).to(
+      })
+      .to(
         trazado,
         {
           yPercent: '-=40',
@@ -70,17 +75,16 @@ export default {
         },
         '0'
       )
-
-      ScrollTrigger.create({
-        trigger: this.$parent.$refs.hero,
-        animation: tl,
-        start: 'top top',
-        end: 'bottom top',
-        pin: this.$parent.$refs.title,
-        pinSpacing: false,
-        scrub: 1,
-      })
-    },
+    ScrollTrigger.create({
+      id: 'stCarta',
+      trigger: this.$parent.$refs.hero,
+      start: 'top top',
+      end: 'bottom top',
+      pin: this.$parent.$refs.title,
+      pinSpacing: false,
+      scrub: 1,
+      animation: this.tlGrafico,
+    })
   },
 }
 </script>
