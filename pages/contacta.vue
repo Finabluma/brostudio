@@ -86,13 +86,10 @@ export default {
   },
   beforeDestroy() {
     this.heroMapTl.pause(0).kill(true)
-    const Alltrigger = ScrollTrigger.getAll()
-    for (let i = 0; i < Alltrigger.length; i++) {
-      Alltrigger[i].kill(true)
+    const allSt = ScrollTrigger.getAll()
+    for (let i = 0; i < allSt.length; i++) {
+      allSt[i].kill(true)
     }
-  },
-  destroy() {
-    this.heroMapTl = null
   },
   mounted() {
     const panels = gsap.utils.toArray('.panel')

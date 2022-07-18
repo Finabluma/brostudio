@@ -228,67 +228,69 @@ gsap.registerPlugin(ScrollTrigger)
 
 export default {
   data: () => ({
-    tlMasterUniverse: gsap.timeline({ paused: true }),
+    tlUniverse: null,
+    tlMasterUniverse: null,
+    tlSun: null,
   }),
-  mounted() {
-    this.universe()
+  beforeDestroy() {
+    this.tlMasterUniverse.pause(0).kill(true)
+    ScrollTrigger.getById('stUniverse')
   },
-  methods: {
-    universe() {
-      const { GRP, corona, iris, sol, cardinales } = this.$refs
-
-      const tl = this.tlMasterUniverse
-
-      const tlScroll = gsap.timeline({
+  mounted() {
+    const { GRP, corona, iris, sol, cardinales } = this.$refs
+    this.tlSun = gsap
+      .timeline({
         defaults: {
           transformOrigin: 'center',
           repeat: -1,
           ease: 'none',
         },
       })
-
-      tlScroll
-        .set(sol, { fill: 'transparent' })
-        .to(corona, {
-          fillOpacity: 0.6,
-          rotation: 360,
-        })
-        .to(
-          iris,
-          {
-            scale: 1.1,
-          },
-          '0'
-        )
-        .timeScale(0.02)
-
-      tl.add('grid')
-        .set(GRP, { fill: '#00000020', fillOpacity: '0.2' })
-        .to(GRP, {
-          yPercent: '+=10',
-          scale: 0.9,
-          strokeWidth: 3,
-          strokeOpacity: 0.2,
-          fill: '#FFFFFF20',
-          fillOpacity: '0.1',
-          transformOrigin: 'center',
-        })
-        .to(
-          cardinales,
-          {
-            yPercent: '+=10',
-            autoAlpha: 0,
-          },
-          'grid'
-        )
-
-      ScrollTrigger.create({
-        animation: tl,
-        trigger: this.$parent.$refs.hero,
-        start: 'top top',
-        scrub: 1,
+      .set(sol, { fill: 'transparent' })
+      .to(corona, {
+        fillOpacity: 0.6,
+        rotation: 360,
       })
-    },
+      .to(
+        iris,
+        {
+          scale: 1.1,
+        },
+        '0'
+      )
+      .timeScale(0.02)
+
+    this.tlUniverse = gsap
+      .timeline()
+      .add('grid')
+      .set(GRP, { fill: '#00000020', fillOpacity: '0.2' })
+      .to(GRP, {
+        yPercent: '+=10',
+        scale: 0.9,
+        strokeWidth: 3,
+        strokeOpacity: 0.2,
+        fill: '#FFFFFF20',
+        fillOpacity: '0.1',
+        transformOrigin: 'center',
+      })
+      .to(
+        cardinales,
+        {
+          yPercent: '+=10',
+          autoAlpha: 0,
+        },
+        'grid'
+      )
+
+    ScrollTrigger.create({
+      id: 'stUniverse',
+      animation: this.tlUniverse,
+      trigger: this.$parent.$refs.hero,
+      start: 'top top',
+      scrub: 1,
+    })
+
+    this.tlMasterUniverse = gsap.timeline().add(this.tlSun).add(this.tlUniverse)
   },
 }
 </script>

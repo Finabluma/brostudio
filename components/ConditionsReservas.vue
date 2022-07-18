@@ -59,9 +59,6 @@ export default {
       Alltrigger[i].kill(true)
     }
   },
-  destroy() {
-    this.conditionsReservasTl = null
-  },
   mounted() {
     const { content } = this.$refs
     const panels = gsap.utils.toArray('.panel')

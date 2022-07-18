@@ -34,25 +34,25 @@ export default {
   },
   data() {
     return {
-      heroScroll: gsap.timeline({ paused: true }),
+      heroScroll: null,
       modifiers: {
         blur: 5,
       },
     }
   },
-  mounted() {
-    this.hero()
+  beforeDestroy() {
+    this.heroScroll.pause(0).kill(true)
+    ScrollTrigger.getById('stHeroSlug')
   },
-  methods: {
-    hero() {
-      const { hero, inner, headline } = this.$refs
-
-      const tl = this.heroScroll
-
-      tl.to(headline, {
+  mounted() {
+    this.heroScroll = gsap.timeline({ paused: true })
+    const { hero, inner, headline } = this.$refs
+    this.heroScroll
+      .to(headline, {
         y: '+=30',
         autoAlpha: 0,
-      }).to(
+      })
+      .to(
         '.meta-info',
         {
           autoAlpha: 0,
@@ -60,16 +60,15 @@ export default {
         },
         '-=0.5'
       )
-
-      ScrollTrigger.create({
-        trigger: hero,
-        animation: tl,
-        start: 'top-=2 top',
-        pin: inner,
-        pinSpacing: false,
-        scrub: 1,
-      })
-    },
+    ScrollTrigger.create({
+      id: 'stHeroSlug',
+      trigger: hero,
+      animation: this.heroScroll,
+      start: 'top top',
+      pin: inner,
+      pinSpacing: false,
+      scrub: 1,
+    })
   },
 }
 </script>

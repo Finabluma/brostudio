@@ -40,9 +40,6 @@ export default {
     this.tlGrafico.pause(0).kill(true)
     ScrollTrigger.getById('stCarta')
   },
-  destroy() {
-    this.tlGrafico = null
-  },
   mounted() {
     const { corazon, trazado, carta } = this.$refs
 

@@ -125,61 +125,68 @@ import { DrawSVGPlugin } from 'gsap/dist/DrawSVGPlugin'
 gsap.registerPlugin(DrawSVGPlugin, ScrollTrigger)
 export default {
   data: () => ({
-    tlRotate: gsap.timeline({
-      paused: true,
-      defaults: {
-        rotation: '360',
-        repeat: -1,
-        transformOrigin: 'center',
-        ease: 'none',
-      },
-    }),
+    tlBadgeRotate: null,
+    tlBadgeScroll: null,
+    tlBadgeMaster: null,
   }),
-  mounted() {
-    this.badge()
+  beforeDestroy() {
+    this.tlBadgeMaster.pause(0).kill(true)
+    ScrollTrigger.getById('stBadge')
   },
-  methods: {
-    badge() {
-      const { letters, bruja, ring1, ring2, ring3 } = this.$refs
-      const tl = this.tlRotate
-      tl.to(bruja, { duration: 60 })
-        .to(letters, { duration: 40 }, '0')
-        .timeScale(0.5)
-        .play()
-
-      const tlBadgeScroll = gsap.timeline()
-
-      tlBadgeScroll
-        .add('rings')
-        .to(ring1, {
-          y: '+=60',
-          fillOpacity: 0.4,
-        })
-        .to(
-          ring2,
-          {
-            y: '+=30',
-            fillOpacity: 0.6,
-          },
-          'rings'
-        )
-        .to(
-          [ring3, letters, bruja],
-          {
-            y: '+=20',
-            fillOpacity: 0.8,
-          },
-          'rings'
-        )
-
-      ScrollTrigger.create({
-        trigger: this.$parent.$refs.hero,
-        animation: tlBadgeScroll,
-        start: 'center center-20%',
-        end: 'bottom top+=10%',
-        scrub: 1,
+  mounted() {
+    const { letters, bruja, ring1, ring2, ring3 } = this.$refs
+    this.tlBadgeRotate = gsap
+      .timeline({
+        paused: true,
+        defaults: {
+          rotation: '360',
+          repeat: -1,
+          transformOrigin: 'center',
+          ease: 'none',
+        },
       })
-    },
+      .to(bruja, { duration: 60 })
+      .to(letters, { duration: 40 }, '0')
+      .timeScale(0.5)
+      .play()
+
+    this.tlBadgeScroll = gsap
+      .timeline()
+      .add('rings')
+      .to(ring1, {
+        y: '+=60',
+        fillOpacity: 0.4,
+      })
+      .to(
+        ring2,
+        {
+          y: '+=30',
+          fillOpacity: 0.6,
+        },
+        'rings'
+      )
+      .to(
+        [ring3, letters, bruja],
+        {
+          y: '+=20',
+          fillOpacity: 0.8,
+        },
+        'rings'
+      )
+
+    ScrollTrigger.create({
+      id: 'stBadge',
+      trigger: this.$parent.$refs.hero,
+      animation: this.tlBadgeScroll,
+      start: 'center center-20%',
+      end: 'bottom top+=10%',
+      scrub: 1,
+    })
+
+    this.tlBadgeMaster = gsap
+      .timeline()
+      .add(this.tlBadgeRotate)
+      .add(this.tlBadgeScroll)
   },
 }
 </script>
