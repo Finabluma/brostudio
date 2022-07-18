@@ -130,7 +130,7 @@ export default {
     tlBadgeMaster: null,
   }),
   beforeDestroy() {
-    this.tlBadgeMaster.pause(0).kill(true)
+    this.tlBadgeMaster.pause().kill()
     ScrollTrigger.getById('stBadge')
   },
   mounted() {

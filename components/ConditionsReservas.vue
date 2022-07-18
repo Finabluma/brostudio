@@ -53,7 +53,7 @@ export default {
     },
   },
   beforeDestroy() {
-    this.conditionsReservasTl.pause(0).kill(true)
+    this.conditionsReservasTl.pause().kill()
     const Alltrigger = ScrollTrigger.getAll()
     for (let i = 0; i < Alltrigger.length; i++) {
       Alltrigger[i].kill(true)

@@ -233,7 +233,7 @@ export default {
     tlSun: null,
   }),
   beforeDestroy() {
-    this.tlMasterUniverse.pause(0).kill(true)
+    this.tlMasterUniverse.pause().kill()
     ScrollTrigger.getById('stUniverse')
   },
   mounted() {
