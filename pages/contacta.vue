@@ -86,10 +86,7 @@ export default {
   },
   beforeDestroy() {
     this.heroMapTl.pause(0).kill(true)
-    const allSt = ScrollTrigger.getAll()
-    for (let i = 0; i < allSt.length; i++) {
-      allSt[i].kill(true)
-    }
+    ScrollTrigger.getById('stPanelsContacta').kill(true)
   },
   mounted() {
     const panels = gsap.utils.toArray('.panel')
@@ -110,7 +107,7 @@ export default {
         // eslint-disable-next-line no-unused-vars
         panels.forEach((panel, i) => {
           ScrollTrigger.create({
-            id: 'panels',
+            id: 'stPanelsContacta',
             trigger: panel,
             start: 'top top',
             pin: true,
