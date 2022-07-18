@@ -17,7 +17,7 @@ export default {
       accessToken: process.env.MAPBOX_ACCESS_TOKEN,
       container: 'map',
       style: process.env.MAPBOX_STYLE,
-      center: [1.37652, 41.139],
+      center: [1.37652, 41.129],
       zoom: 13,
       maxZoom: 18,
       minZoom: 13,
