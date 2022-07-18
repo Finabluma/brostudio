@@ -1,15 +1,16 @@
+<!-- eslint-disable no-unused-vars -->
 <template>
   <div id="contacta">
     <app-header />
     <main>
-      <div class="contact_content">
-        <div class="inner_content">
-          <h2>Contacta</h2>
-          <SanityContent :blocks="page.mainPageContent" />
+      <div ref="hero" class="hero panel">
+        <div ref="inner" class="inner-hero">
+          <h2 ref="h2">Contacta</h2>
+          <SanityContent ref="content" :blocks="page.mainPageContent" />
         </div>
-        <div class="mapa">
-          <map-box-light />
-        </div>
+      </div>
+      <div ref="map" class="mapa panel">
+        <map-box-light />
       </div>
       <app-aside layout="green" title="Contenido secundario Contacta">
         <div
@@ -33,6 +34,8 @@
 </template>
 
 <script>
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import AppHeader from '~/components/AppHeader.vue'
 import AppFooter from '~/components/AppFooter.vue'
 import MapBoxLight from '~/components/MapBoxLight.vue'
@@ -41,15 +44,22 @@ import AppAside from '~/components/AppAside.vue'
 import RichTextSection from '~/components/RichTextSection'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 
+gsap.registerPlugin(ScrollTrigger)
+
 export default {
   name: 'PageContacta',
   components: {
+    RichTextSection,
     AppHeader,
     AppFooter,
     LatestArticlesSection,
-    RichTextSection,
     AppAside,
     MapBoxLight,
+  },
+  data() {
+    return {
+      heroMapTl: null,
+    }
   },
   head() {
     const generalData = {
@@ -74,85 +84,143 @@ export default {
       return page[0] || null
     },
   },
+  beforeDestroy() {
+    this.heroMapTl.pause(0).kill(true)
+    const Alltrigger = ScrollTrigger.getAll()
+    for (let i = 0; i < Alltrigger.length; i++) {
+      Alltrigger[i].kill(true)
+    }
+  },
+  destroy() {
+    this.heroMapTl = null
+  },
+  mounted() {
+    const panels = gsap.utils.toArray('.panel')
+    const { hero, h2, content, inner } = this.$refs
+
+    this.heroMapTl = gsap.timeline().to([h2, content], {
+      autoAlpha: 0,
+      y: '+=20',
+      scrollTrigger: {
+        id: 'hero',
+        trigger: hero,
+        start: 'top top',
+        pin: inner,
+        pinSpacing: false,
+        scrub: 1,
+      },
+      onStart: () => {
+        // eslint-disable-next-line no-unused-vars
+        panels.forEach((panel, i) => {
+          ScrollTrigger.create({
+            id: 'panels',
+            trigger: panel,
+            start: 'top top',
+            pin: true,
+            pinSpacing: false,
+            snap: 1,
+          })
+        })
+      },
+    })
+  },
 }
 </script>
 
 <style lang="postcss">
 #contacta {
   @apply relative
-    z-30
-    bg-gradient-to-b
+  z-30
+  overflow-x-hidden
+  bg-gradient-to-b
   from-gray-200
   to-gray-300
   dark:from-gray-700
   dark:to-gray-800;
+
   & main {
-    & .contact_content {
-      @apply relative
-      z-10
-      pt-[10vh]
-      mb-10
-      sm:pt-[15vh]
-      md:pt-[11vh]
-      xl:pt-[11vh];
+    & .hero {
+      @apply w-screen
+      h-[260px]
+      flex
+      justify-center
+      items-center
+      bg-gradient-to-b
+      from-gray-200
+      to-gray-300
+      dark:from-gray-700
+      dark:to-gray-600
+      sm:h-[280px]
+      md:h-[300px];
 
-      & .mapa {
-        @apply w-[95vw]
-        h-[70vh]
-        mx-auto
-        shadow-md
-        sm:w-[98vw]
-        sm:h-[80vh]
-        md:h-[70vh]
-        md:w-[95vw]
-        xl:w-[85vw]
-        2xl:w-[70vw];
-      }
-
-      & .inner_content {
-        @apply absolute
-        z-10
+      & .inner-hero {
+        @apply text-center
+        pt-14
         w-10/12
-        flex
-        flex-col
-        left-4
-        bottom-5
-        p-3
-        sm:left-6
-        sm:bg-white/20
-        sm:w-auto
-        md:left-10
-        md:bg-transparent
-        xl:left-36
-        xl:bottom-10
-        2xl:w-9/12
-        2xl:left-72;
+        mx-auto
+        sm:w-10/12
+        sm:text-left
+        lg:w-10/12
+        xl:w-9/12;
 
         & h2 {
           @apply font-dejanire
-          text-6xl
-          text-slate800
+          font-light
+          text-4xl
+          leading-none
           capitalize
           content-after
-          mb-5
-          xl:text-8xl;
+          mb-2
+          sm:text-5xl;
 
           &:after {
-            @apply bg-slate800;
+            @apply block
+            w-10
+            h-0.5
+            bg-current
+            mt-1
+            mx-auto
+            sm:ml-0;
           }
         }
 
         & div {
-          @apply pl-2 xl:pl-3;
-          & p {
-            @apply font-hero font-light text-slate800 mb-0;
-          }
+          @apply sm:flex
+          sm:items-center;
 
-          & a {
-            @apply text-slate800;
+          & p {
+            @apply font-hero
+            font-light
+            text-paragraph
+            mb-0
+            sm:flex
+            sm:items-center
+            sm:content-after;
+
+            &::after {
+              @apply block
+              h-1
+              w-1
+              rounded-full
+              bg-current
+              mx-2;
+            }
+
+            &:last-child:after {
+              @apply content-none;
+            }
           }
         }
       }
+    }
+
+    & .mapa {
+      @apply w-screen
+      h-[80vh]
+      mx-auto
+      border-t-2
+      border-gray-500/20
+      dark:border-white/20;
     }
   }
 }

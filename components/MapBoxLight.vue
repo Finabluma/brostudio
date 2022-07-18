@@ -17,13 +17,12 @@ export default {
       accessToken: process.env.MAPBOX_ACCESS_TOKEN,
       container: 'map',
       style: process.env.MAPBOX_STYLE,
-      center: [1.378, 41.13],
+      center: [1.37652, 41.139],
       zoom: 13,
       maxZoom: 18,
       minZoom: 13,
       attributionControl: false,
     }).addControl(new mapboxgl.NavigationControl(), 'bottom-right')
-    // .addControl(new mapboxgl.FullscreenControl(), 'top-right')
     this.map.scrollZoom.disable()
     this.map.dragPan.enable({
       linearity: 0.3,
@@ -39,9 +38,6 @@ export default {
 #map {
   @apply relative
   w-full
-  h-full
-  border-2
-  border-white/75
-  dark:border-black/25;
+  h-full;
 }
 </style>
