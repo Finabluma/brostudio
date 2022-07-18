@@ -39,8 +39,9 @@ export default {
 <style lang="postcss" scoped>
 .rich-text {
   @apply font-dejanire font-light
-    leading-normal
     text-[21px]
+    leading-relaxed
+    break-words
     lg:text-[24px];
 
   & p,

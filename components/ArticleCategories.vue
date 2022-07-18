@@ -26,6 +26,7 @@ export default {
 div {
   @apply flex
   items-center
+  flex-wrap
   mb-5;
 
   & svg {
