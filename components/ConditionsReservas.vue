@@ -53,11 +53,8 @@ export default {
     },
   },
   beforeDestroy() {
-    this.conditionsReservasTl.pause().kill()
-    const Alltrigger = ScrollTrigger.getAll()
-    for (let i = 0; i < Alltrigger.length; i++) {
-      Alltrigger[i].kill(true)
-    }
+    this.conditionsReservasTl.pause(0).kill(true)
+    ScrollTrigger.getById('stPanels').kill(true)
   },
   mounted() {
     const { content } = this.$refs
@@ -69,7 +66,7 @@ export default {
       onStart: () => {
         panels.forEach((panel, i) => {
           ScrollTrigger.create({
-            id: 'panels',
+            id: 'stPanels',
             trigger: panel,
             start: 'top top',
             pin: true,
