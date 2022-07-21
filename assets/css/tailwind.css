@@ -14,12 +14,22 @@
     dark:text-gray-300;
 
     & .nav {
-      & .moon {
-        @apply stroke-slate800;
-      }
 
-      & .sun {
-        @apply dark:stroke-gray-300 dark:fill-gray-300;
+      & .icon{
+        @apply w-5
+        cursor-pointer;
+
+        &:hover{
+          @apply opacity-90
+        }
+
+        &.icon-menu{
+          @apply w-6
+        }
+
+        &.icon-phone{
+          @apply xl:w-6 xl:px-1
+        }
       }
     }
 
@@ -28,11 +38,11 @@
         @apply text-white/90;
       }
 
-      & svg g {
-        @apply fill-white/90 dark:stroke-gray-300;
+      & .icon-menu, & .icon-sun, & .icon-phone, & .icon-instagram g, & .logo #boveda{
+        @apply fill-white/90;
       }
 
-      & .moon {
+      & .icon-monitor, & .icon-dark {
         @apply stroke-white/90;
       }
 
@@ -40,12 +50,13 @@
         & span {
           @apply text-slate800 dark:text-gray-300;
         }
-        & svg g {
-          @apply fill-slate800 dark:fill-gray-300;
+
+        & .icon-menu, & .icon-sun, & .icon-phone,& .icon-instagram g{
+          @apply fill-current
         }
 
-        & .moon {
-          @apply stroke-slate800;
+        & .icon-monitor, & .icon-dark{
+          @apply stroke-current;
         }
       }
     }
