@@ -68,9 +68,12 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    // https://sanity.nuxtjs.org
     '@nuxtjs/sanity/module',
     // https://color-mode.nuxtjs.org/
     '@nuxtjs/color-mode',
+    // https://www.npmjs.com/package/@nuxtjs/svg
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -101,9 +104,8 @@ export default {
 
   // ColorMode
   colorMode: {
-    classPrefix: '',
+    preference: 'system',
     classSuffix: '',
-    preference: 'light',
   },
 
   sanity: {
