@@ -13,8 +13,11 @@
     dark:to-gray-800
     dark:text-gray-300;
 
-    & .nav {
+    & .icon-menu, & .icon-sun, & .icon-phone, & .icon-instagram g, & .logo #boveda, & .icon-user{
+      @apply dark:fill-gray-300
+    }
 
+    & .nav {
       & .icon{
         @apply w-5
         cursor-pointer;

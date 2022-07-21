@@ -53,7 +53,9 @@ a {
   @apply w-2/5
   sm:w-32
   md:w-28
-  lg:w-28;
+  lg:w-28
+  fill-slate800
+  dark:fill-gray-300;
 
   & #favicon {
     @apply hidden;
