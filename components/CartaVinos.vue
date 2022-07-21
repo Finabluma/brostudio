@@ -10,7 +10,7 @@
         <div v-for="drink in vino" :key="drink.id" class="menu-item">
           <div class="nombre_precio">
             <span>{{ drink.vino }}</span>
-            <span>{{ formatPrice(drink.precio) }} €</span>
+            <span>{{ formatPrice(drink.precio) }}€</span>
           </div>
           <div class="do">
             <abbr title="Denominación de Origen">D.O.</abbr>{{ drink.do.do }}

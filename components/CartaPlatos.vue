@@ -10,7 +10,7 @@
         <div v-for="plato in platos" :key="plato.id" class="menu-item">
           <div class="nombre_precio">
             <span>{{ plato.plato }}</span>
-            <span v-if="plato.precio"> {{ formatPrice(plato.precio) }} € </span>
+            <span v-if="plato.precio"> {{ formatPrice(plato.precio) }}€ </span>
             <div v-else><i>s/peso</i></div>
           </div>
         </div>
