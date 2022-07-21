@@ -25,6 +25,7 @@ import AppColorMode from './AppColorMode.vue'
 import AppBurguer from './AppBurguer.vue'
 import AppLogo from './AppLogo.vue'
 import AppDrawer from './AppDrawer.vue'
+gsap.registerPlugin(ScrollTrigger)
 
 export default {
   name: 'AppHeader',
