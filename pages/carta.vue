@@ -72,7 +72,6 @@ import CartaPlatos from '~/components/CartaPlatos.vue'
 import CartaVinos from '~/components/CartaVinos.vue'
 import SVGCarta from '~/components/SVGCarta.vue'
 import AppAside from '~/components/AppAside.vue'
-// import LatestArticlesSection from '~/components/LatestArticlesSection.vue'
 import dynamicHeadTags from '~/utils/dynamicHeadTags.js'
 
 export default {
