@@ -96,10 +96,6 @@ module.exports = {
   variants: {
     extend: {},
   },
-  corePlugins: {
-    container: false,
-    aspectRatio: false,
-  },
   plugins: [
     require('tailwindcss-dark-mode')(),
     require('tailwindcss-pseudo-elements')(),
