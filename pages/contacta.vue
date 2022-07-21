@@ -3,13 +3,13 @@
   <div id="contacta">
     <app-header />
     <main>
-      <div ref="hero" class="hero panel">
+      <div ref="hero" class="hero pan">
         <div ref="inner" class="inner-hero">
           <h2 ref="h2">Contacta</h2>
           <SanityContent ref="content" :blocks="page.mainPageContent" />
         </div>
       </div>
-      <div ref="map" class="mapa panel">
+      <div ref="map" class="mapa pan">
         <map-box-light />
       </div>
       <app-aside layout="green" title="Contenido secundario Contacta">
@@ -89,7 +89,7 @@ export default {
     ScrollTrigger.getById('stPanelsContacta').kill(true)
   },
   mounted() {
-    const panels = gsap.utils.toArray('.panel')
+    const items = gsap.utils.toArray('.pan')
     const { hero, h2, content, inner } = this.$refs
 
     this.heroMapTl = gsap.timeline().to([h2, content], {
@@ -104,11 +104,10 @@ export default {
         scrub: 1,
       },
       onStart: () => {
-        // eslint-disable-next-line no-unused-vars
-        panels.forEach((panel, i) => {
+        items.forEach((item, i) => {
           ScrollTrigger.create({
             id: 'stPanelsContacta',
-            trigger: panel,
+            trigger: item,
             start: 'top top',
             pin: true,
             pinSpacing: false,

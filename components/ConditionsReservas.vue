@@ -36,8 +36,7 @@ export default {
   },
   data() {
     return {
-      conditionsReservasTl: gsap.timeline(),
-      conditionsReservasSt: ScrollTrigger,
+      conditionsReservasTl: null,
     }
   },
   computed: {
@@ -64,12 +63,12 @@ export default {
     const { content } = this.$refs
     const panels = gsap.utils.toArray('.panel')
 
-    this.conditionsReservasTl.from(content, {
+    this.conditionsReservasTl = gsap.timeline().from(content, {
       autoAlpha: 0,
       y: '+=100',
       onStart: () => {
         panels.forEach((panel, i) => {
-          this.conditionsReservasSt.create({
+          ScrollTrigger.create({
             id: 'stPanels',
             trigger: panel,
             start: 'top top',
