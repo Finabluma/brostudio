@@ -1,6 +1,8 @@
 <template>
   <div id="drawer" ref="drawerblock" @click="drawerOut()">
-    <app-close id="close" @click="drawerOut()" />
+    <div id="close">
+      <IconClose @click="drawerOut()" />
+    </div>
     <div ref="innerdrawer" class="drawer">
       <app-main-nav aria-label="Main" navname="Navegación principal" />
       <div class="bottom">
@@ -14,15 +16,15 @@
 </template>
 <script>
 import { gsap } from 'gsap'
-import AppClose from './AppClose.vue'
-import AppMainNav from './AppMainNav.vue'
-import AppPhoneContact from './AppPhoneContact.vue'
+import AppMainNav from '~/components/AppMainNav.vue'
+import AppPhoneContact from '~/components/AppPhoneContact.vue'
+import IconClose from '~/assets/icons/close.svg?inline'
 export default {
   name: 'AppDrawer',
   components: {
-    AppClose,
     AppMainNav,
     AppPhoneContact,
+    IconClose,
   },
   data() {
     return {
@@ -120,10 +122,12 @@ export default {
 
   & #close {
     @apply absolute
-      top-5
-      right-2
-      z-50
-      lg:right-10;
+    w-6
+    top-5
+    right-2
+    z-50
+    cursor-pointer
+    lg:right-10;
   }
 
   & .drawer {
@@ -143,6 +147,8 @@ export default {
       & p {
         @apply mb-3;
       }
+
+      
     }
   }
 }

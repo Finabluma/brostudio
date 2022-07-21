@@ -21,7 +21,7 @@
         </p>
         <p class="login">
           <link-external href="https://lavolta.sanity.studio">
-            <span class="sr-only">Inicia sesión</span> <app-icon-user />
+            <span class="sr-only">Inicia sesión</span> <IconUser />
           </link-external>
         </p>
       </div>
@@ -32,10 +32,11 @@
 <script>
 import AppLogo from '~/components/AppLogo.vue'
 import AppMainNav from '~/components/AppMainNav.vue'
-import AppIconUser from '~/components/AppIconUser.vue'
+// import AppIconUser from '~/components/AppIconUser.vue'
 import LinkExternal from '~/components/RichText/LinkExternal.vue'
+import IconUser from '~/assets/icons/user.svg?inline'
 export default {
-  components: { AppLogo, AppMainNav, AppIconUser, LinkExternal },
+  components: { AppLogo, AppMainNav, IconUser, LinkExternal },
 }
 </script>
 
@@ -154,7 +155,7 @@ export default {
           @apply flex items-center justify-center;
 
           & svg {
-            @apply mx-1;
+            @apply w-5;
           }
         }
       }

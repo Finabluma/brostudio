@@ -43,40 +43,8 @@
 </template>
 
 <script>
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 export default {
   name: 'AppLogo',
-  methods: {
-    logoBoveda: () => {
-      gsap.registerPlugin(ScrollTrigger)
-      const logo = gsap.utils.toArray('.nav .logo #boveda .fill-shape')
-      const logoRev = logo.reverse()
-
-      function logoAnimation(direction) {
-        const scrollingDown = direction === 1
-        const fillLogo = scrollingDown ? logo : logoRev
-
-        const tl = gsap.timeline()
-
-        return tl.to(fillLogo, {
-          autoAlpha: () => (scrollingDown ? '0' : '1'),
-          y: () => (scrollingDown ? '-=20' : '0'),
-        })
-      }
-
-      ScrollTrigger.create({
-        start: 'top top',
-        end: '100%',
-        onEnter: ({ direction }) => {
-          logoAnimation(direction)
-        },
-        onLeaveBack: ({ direction }) => {
-          logoAnimation(direction)
-        },
-      })
-    },
-  },
 }
 </script>
 
@@ -90,14 +58,6 @@ a {
   & #favicon {
     @apply hidden;
   }
-
-  & svg {
-    @apply fill-slate800 dark:fill-gray-300;
-  }
-}
-
-.nav .nav__container .logo a #boveda.white {
-  @apply fill-white;
 }
 
 .nav.scrolled .nav__container .logo a #boveda {

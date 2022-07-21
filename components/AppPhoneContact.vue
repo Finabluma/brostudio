@@ -6,15 +6,18 @@
       title="Reservas al 977651416"
       class="phone"
     >
-      <app-icon-phone /><span>977651416</span>
+      <IconPhone />
+      <span>977651416</span>
     </a>
   </div>
 </template>
 
 <script>
-import AppIconPhone from '~/components/AppIconPhone.vue'
+import IconPhone from '~/assets/icons/phone.svg?inline'
 export default {
-  components: { AppIconPhone },
+  components: {
+    IconPhone,
+  },
 }
 </script>
 
@@ -27,6 +30,7 @@ div a {
     @apply sr-only
     font-hero
     font-light
+    text-[16px]
     md:not-sr-only
     md:flex
     md:ml-2;
@@ -37,6 +41,10 @@ div a {
   @apply flex
   justify-center
   items-center;
+
+  & .icon {
+    @apply w-4;
+  }
 
   & span {
     @apply not-sr-only

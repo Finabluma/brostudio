@@ -9,7 +9,7 @@
           <app-burguer ref="burguer" @click="drawerOn()" />
         </div>
         <div itemscope itemtype="https://schema.org/Restaurant" class="logo">
-          <app-logo ref="logo" />
+          <app-logo />
         </div>
       </div>
     </div>
@@ -54,7 +54,6 @@ export default {
     },
   },
   mounted() {
-    this.$refs.logo.logoBoveda()
     this.navigation()
   },
   methods: {

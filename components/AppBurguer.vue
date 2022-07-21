@@ -1,30 +1,14 @@
 <template>
   <div id="menu__navigation" v-on="$listeners">
-    <app-icon-base
-      id="burger"
-      view-box="0 0 50 50"
-      icon-name="burguer"
-      :width="16"
-      :height="17"
-      role="button"
-    >
-      <rect y="43.28" width="50" height="8.95" /><rect
-        y="21.64"
-        width="30"
-        height="8.95"
-      /><rect width="17.5" height="8.95" />
-    </app-icon-base>
+    <IconMenu />
   </div>
 </template>
 
 <script>
-import AppIconBase from './AppIconBase.vue'
+import IconMenu from '~/assets/icons/menu.svg?inline'
 export default {
-  components: { AppIconBase },
+  components: {
+    IconMenu,
+  },
 }
 </script>
-
-<style lang="postcss" scoped>
-#menu__navigation svg {
-}
-</style>

@@ -2,7 +2,7 @@
   <app-icon-base
     view-box="0 0 512 512"
     :width="17"
-    :height="17"
+    :height="16"
     icon-name="Teléfono"
   >
     <path
