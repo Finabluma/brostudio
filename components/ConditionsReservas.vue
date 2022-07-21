@@ -36,7 +36,8 @@ export default {
   },
   data() {
     return {
-      conditionsReservasTl: null,
+      conditionsReservasTl: gsap.timeline(),
+      conditionsReservasSt: ScrollTrigger,
     }
   },
   computed: {
@@ -54,18 +55,21 @@ export default {
   },
   beforeDestroy() {
     this.conditionsReservasTl.pause(0).kill(true)
-    ScrollTrigger.getById('stPanels').kill(true)
+    const triggers = ScrollTrigger.getAll()
+    triggers.forEach(function (trigger) {
+      trigger.kill()
+    })
   },
   mounted() {
     const { content } = this.$refs
     const panels = gsap.utils.toArray('.panel')
 
-    this.conditionsReservasTl = gsap.timeline().from(content, {
+    this.conditionsReservasTl.from(content, {
       autoAlpha: 0,
       y: '+=100',
       onStart: () => {
         panels.forEach((panel, i) => {
-          ScrollTrigger.create({
+          this.conditionsReservasSt.create({
             id: 'stPanels',
             trigger: panel,
             start: 'top top',
