@@ -1,7 +1,7 @@
 <template>
   <div v-if="article.categories">
     <span class="sr-only">Categorías:</span>
-    <app-icon-tags />
+    <IconHashtag />
     <span v-for="(category, index) in article.categories" :key="category.slug">
       <NuxtLink :to="category.slug | articleCategoryUrl">
         {{ category.title }}
@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import IconHashtag from '~/assets/icons/hashtag.svg?inline'
 export default {
   name: 'ArticleDateAndCategories',
+  components: {
+    IconHashtag,
+  },
   props: {
     article: {
       type: Object,

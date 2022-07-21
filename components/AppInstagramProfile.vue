@@ -6,17 +6,17 @@
       title="La Volta en Instagram"
       target="_blank"
     >
-      <app-icon-instagram />
+      <IconInstagram />
       <span>Instagram</span>
     </a>
   </div>
 </template>
 
 <script>
-import AppIconInstagram from '~/components/AppIconInstagram'
+import IconInstagram from '~/assets/icons/instagram.svg?inline'
 export default {
   components: {
-    AppIconInstagram,
+    IconInstagram,
   },
 }
 </script>

@@ -13,17 +13,30 @@
     dark:to-gray-800
     dark:text-gray-300;
 
-    & .icon-menu, & .icon-sun, & .icon-phone, & .icon-instagram g, & .logo #boveda, & .icon-user{
+    & .icon{
+      @apply w-5;
+
+      &.icon-menu, &.icon-sun, &.icon-phone, &.icon-instagram, &.icon-hashtag,
+      &.icon-user{
+        @apply dark:fill-gray-300
+      }
+
+    }
+
+    & .logo #boveda{
       @apply dark:fill-gray-300
     }
 
     & .nav {
       & .icon{
-        @apply w-5
-        cursor-pointer;
+        @apply cursor-pointer;
 
         &:hover{
           @apply opacity-90
+        }
+
+        &.icon-instagram{
+          @apply w-[18px]
         }
 
         &.icon-menu{
@@ -41,7 +54,7 @@
         @apply text-white/90;
       }
 
-      & .icon-menu, & .icon-sun, & .icon-phone, & .icon-instagram g, & .logo #boveda{
+      & .icon-menu, & .icon-sun, & .icon-phone, & .icon-instagram, & .logo #boveda{
         @apply fill-white/90;
       }
 
@@ -54,7 +67,7 @@
           @apply text-slate800 dark:text-gray-300;
         }
 
-        & .icon-menu, & .icon-sun, & .icon-phone,& .icon-instagram g{
+        & .icon-menu, & .icon-sun, & .icon-phone,& .icon-instagram{
           @apply fill-current
         }
 

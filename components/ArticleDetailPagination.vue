@@ -7,7 +7,7 @@
         :to="article.previousArticleSlug | articleUrl"
       >
         <div class="content prev">
-          <app-chevron-icon-left />
+          <IconChevronLeft />
           <div class="preview">
             <div class="img">
               <div v-if="article.previousArticleImg" class="has-img">
@@ -53,7 +53,7 @@
               <h3>{{ article.nextArticleTitle }}</h3>
             </div>
           </div>
-          <app-chevron-icon-right />
+          <IconChevronRight />
         </div>
       </NuxtLink>
     </div>
@@ -63,11 +63,11 @@
 <script>
 import ImgItem from '~/components/ImgItem.vue'
 import SVGMarieta from '~/components/SVGMarieta.vue'
-import AppChevronIconRight from '~/components/AppIconChevronRight.vue'
-import AppChevronIconLeft from '~/components/AppIconChevronLeft.vue'
+import IconChevronRight from '~/assets/icons/chevronright.svg?inline'
+import IconChevronLeft from '~/assets/icons/chevronleft.svg?inline'
 export default {
   name: 'ArticleDetailPagination',
-  components: { ImgItem, SVGMarieta, AppChevronIconRight, AppChevronIconLeft },
+  components: { ImgItem, SVGMarieta, IconChevronRight, IconChevronLeft },
   props: {
     article: {
       type: Object,
