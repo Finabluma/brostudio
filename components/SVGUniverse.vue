@@ -234,7 +234,7 @@ export default {
   }),
   beforeDestroy() {
     this.tlMasterUniverse.pause(0).kill(true)
-    ScrollTrigger.getById('stUniverse')
+    ScrollTrigger.getById('stUniverse').kill(true)
   },
   mounted() {
     const { GRP, corona, iris, sol, cardinales } = this.$refs

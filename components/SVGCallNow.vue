@@ -131,7 +131,7 @@ export default {
   }),
   beforeDestroy() {
     this.tlBadgeMaster.pause(0).kill(true)
-    ScrollTrigger.getById('stBadge')
+    ScrollTrigger.getById('stBadge').kill(true)
   },
   mounted() {
     const { letters, bruja, ring1, ring2, ring3 } = this.$refs
