@@ -2,6 +2,3 @@
 
 Consuming data from Sanity 
 [https://www.sanity.io]
-
-
-
