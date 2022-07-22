@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink exact to="/" class="link-logo">
+  <NuxtLink exact to="/" class="link-logo" aria-label="logo" labelledby="logo">
     <svg id="boveda" viewBox="0 0 408.55 144.35" role="img" itemprop="logo">
       <g>
         <path
