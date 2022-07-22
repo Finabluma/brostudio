@@ -8,15 +8,18 @@
         @click="$colorMode.preference = 'dark'"
       >
         <IconSystem />
+        <span class="hidden">Dark ColoMode</span>
       </li>
       <li
         v-else-if="$colorMode.preference === 'dark'"
         @click="$colorMode.preference = 'light'"
       >
         <IconDark />
+        <span class="hidden">Light ColorMode</span>
       </li>
       <li v-else @click="$colorMode.preference = 'system'">
         <IconLight />
+        <span class="hidden">System ColoMode</span>
       </li>
     </ul>
   </div>

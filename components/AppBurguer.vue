@@ -1,6 +1,7 @@
 <template>
   <div id="menu__navigation" v-on="$listeners">
     <IconMenu />
+    <span class="hidden">Navigation</span>
   </div>
 </template>
 
