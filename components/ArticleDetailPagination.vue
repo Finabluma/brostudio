@@ -113,7 +113,7 @@ section {
           mb-3
           p-2;
 
-        & .chevron {
+        & .icon {
           @apply hidden
             md:block
             md:opacity-70;
@@ -165,9 +165,10 @@ section {
           }
 
           & .title {
-            @apply text-xl
-              font-hero
-              font-light;
+            @apply w-9/12
+            text-xl
+            font-hero
+            font-light;
           }
         }
 
