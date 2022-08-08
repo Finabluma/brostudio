@@ -86,7 +86,7 @@ aside {
     @apply mb-11
     px-1
     md:flex
-    md:justify-center
+    md:justify-start
     md:max-w-4xl
     md:mx-auto
     md:mb-14;
