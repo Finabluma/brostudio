@@ -10,7 +10,12 @@
       <img-item
         :src="article.featuredImage.asset._ref"
         :alt="article.featuredImage.alternativeText"
-        :modifiers="modifiers"
+        :modifiers="{
+          crop: article.featuredImage.crop,
+          hotspot: article.featuredImage.hotspot,
+          q: 80,
+          blur: 5,
+        }"
         fit="cover"
       />
     </div>
@@ -35,9 +40,6 @@ export default {
   data() {
     return {
       heroScroll: null,
-      modifiers: {
-        blur: 5,
-      },
     }
   },
   beforeDestroy() {

@@ -6,7 +6,11 @@
           <div v-if="article.featuredImage" class="has-img">
             <img-item
               :src="article.featuredImage.asset._ref"
-              :modifiers="modifiers"
+              :modifiers="{
+                crop: article.featuredImage.crop,
+                hotspot: article.featuredImage.hotspot,
+                q: 80,
+              }"
               fit="cover"
               sizes="xs:130px"
               height="130px"
