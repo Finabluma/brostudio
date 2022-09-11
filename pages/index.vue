@@ -168,7 +168,7 @@ export default {
     sm:h-[300px]
     md:h-[350px]
     lg:h-[380px]
-    xl:h-[420px];
+    xl:h-[600px];
 
     &:after {
       @apply absolute

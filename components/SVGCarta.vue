@@ -92,7 +92,7 @@ export default {
     mx-auto
     sm:w-9/12
     lg:w-10/12
-    2xl:max-w-xl;
+    2xl:max-w-screen-2xl;
 
   & .fill-shape {
     @apply fill-white
