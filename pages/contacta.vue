@@ -56,6 +56,7 @@ export default {
     AppAside,
     MapBoxLight,
   },
+  transition: 'tweakOpacity',
   data() {
     return {
       heroMapTl: null,
@@ -121,6 +122,20 @@ export default {
 </script>
 
 <style lang="postcss">
+/* .tweakOpacity-enter-active,
+.tweakOpacity-leave-active {
+  transition: opacity 1s ease-out;
+} */
+.tweakOpacity-enter-active {
+  transition: opacity 0.25s ease-out;
+}
+/* .tweakOpacity-enter,
+.tweakOpacity-leave-active {
+  opacity: 0;
+} */
+.tweakOpacity-enter {
+  opacity: 0;
+}
 #contacta {
   @apply relative
   z-30
@@ -144,7 +159,8 @@ export default {
       dark:from-gray-700
       dark:to-gray-600
       sm:h-[280px]
-      md:h-[300px];
+      md:h-[300px]
+      xl:h-[325px];
 
       & .inner-hero {
         @apply text-center
@@ -154,7 +170,8 @@ export default {
         sm:w-10/12
         sm:text-left
         lg:w-10/12
-        xl:w-9/12;
+        xl:w-9/12
+        xl:pt-20;
 
         & h2 {
           @apply font-dejanire
@@ -164,7 +181,8 @@ export default {
           capitalize
           content-after
           mb-2
-          sm:text-5xl;
+          sm:text-5xl
+          xl:text-7xl;
 
           &:after {
             @apply block
